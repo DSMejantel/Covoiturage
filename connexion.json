@@ -1,0 +1,18 @@
+{
+    "component": "shell",
+    "title": "Mobilités BARJAC",
+    "link": "/",
+    "icon": "car",
+    "footer":"Conception : Commune de BARJAC (48) avec SQLpage",
+    "favicon":"/favicon.ico",
+    "language":"fr-FR",
+    "layout": "fluid",
+    "norobot": "TRUE",
+    "menu_item": [
+         {"link": "/aide.sql", "title": "Aide","icon":"help"},
+         {"title": "Connexion", "submenu": [
+            {"link": "/comptes/signin.sql", "title": "Se connecter"},
+            {"link": "/comptes/create.sql", "title": "Créer un compte"}
+        ],"icon":"lock"}
+        ]
+}

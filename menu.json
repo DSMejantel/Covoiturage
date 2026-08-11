@@ -1,0 +1,34 @@
+{
+    "component": "shell",
+    "title": "Mobilités BARJAC",
+    "link": "/",
+    "icon": "car",
+    "footer":"Conception : Commune de BARJAC (48) avec SQLpage",
+    "javascript_module": "/rich_text_editor.js",
+    "favicon":"/favicon.ico",
+    "fixed_top_menu": "TRUE",
+    "language":"fr-FR",
+    "layout": "fluid",
+    "norobot": "TRUE",
+    "menu_item": [
+         {"link": "/index.sql", "title": "Tableau de bord","icon":"clipboard-list"},               
+         {"title": "Covoiturage", "submenu": [
+            {"link": "/trajet.sql", "title": "Proposer un trajet"},
+            {"link": "/besoin.sql", "title": "Demande un trajet"},
+            {"link": "/index.sql?tab=3", "title": "Gérer mon covoiturage"},
+            {"link": "/aires.sql", "title": "Aires de covoiturage"}
+        ],"icon":"car"},
+         {"link": "/aide.sql", "title": "Aide","icon":"help"},
+       
+         {"title": "Comptes", "submenu": [
+            {"link": "/comptes/comptes.sql", "title": "Liste"},
+            {"link": "/comptes/comptes_ajout.sql", "title": "Ajouter"}
+        ],"icon":"users-group"},
+
+        {"title": "Mon compte", "submenu": [
+            {"link": "/comptes/user.sql?tab=Mon profil", "title": "Mon Profil"},
+            {"link": "/comptes/user.sql?tab=Mes besoins", "title": "Mes besoins"},
+            {"link": "/comptes/logout.sql", "title": "Se déconnecter"}
+        ],"icon":"user"}
+    ]
+}
