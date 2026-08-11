@@ -1,0 +1,2 @@
+INSERT INTO aires (covoit, covoit_Lon, covoit_Lat)
+VALUES ('Barjac, place du village','3.410306','44.502909'),('Barjac, Parking de la Ginèze','3.410548','44.504693'),('Barjac, Entrée Ouest','3.411162','44.500107'),('Barjac, La Gare','3.41096','44.499462'),('Baraque de Récurat','3.423066','44.523546'),('Recoulettes','3.394666','44.497987'),('Cultures, entrée Nord RD808','3.385179','44.494272'),('Place de Méjantel','44.531808','3.427516')
