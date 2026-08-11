@@ -90,8 +90,7 @@ select
 select 
     'besoin_valider.sql' as link,
     'destination'         as form,
-    'square-plus' as icon,
-    'green'      as color,
+    'teal'      as color,
     'checks' as icon,
     'J''ai vérifié et je valide'         as title;
 

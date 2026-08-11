@@ -98,7 +98,6 @@ select
 select 
     'trajet_valider.sql' as link,
     'trajet'         as form,
-    'square-plus' as icon,
     'teal'      as color,
     'checks' as icon,
     'J''ai tout vérifié et je valide'         as title;
