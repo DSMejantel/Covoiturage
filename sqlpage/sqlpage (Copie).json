@@ -1,0 +1,14 @@
+{
+  "database_url": "sqlite://./sqlpage/sqlpage.db?mode=rwc",
+  "max_uploaded_file_size": 10000000,
+  "listen_on": "127.0.0.1:8080",
+  "allow_exec":true,
+  "sqlite_extensions": [
+        "mod_spatialite"
+    ],
+    "smtp_host": "smtp.provider.net",
+  "smtp_username": "email@domain.fr",
+  "smtp_password": "password",
+  "smtp_from": "Name <email@domain.fr>"
+}
+
