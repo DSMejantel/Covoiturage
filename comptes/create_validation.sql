@@ -15,7 +15,7 @@ SELECT 'dynamic' AS component, sqlpage.read_file_as_text('connexion.json') AS pr
 
 set result = sqlpage.send_mail(json_object(
     'to', :courriel,
-    'subject', 'Enregistrement de votre compte Barjac Mobilités',
+    'subject', 'Enregistrement de votre compte BARJACar',
     'body', 'Votre code de validation est : '||:code
 ));
 

@@ -8,6 +8,7 @@ SELECT 'redirect' AS component,
     
 --Menu
 SELECT 'dynamic' AS component, sqlpage.read_file_as_text('menu.json') AS properties;
+
 select 
     'button' as component,
     'sm'     as size,
@@ -23,23 +24,63 @@ select
     'arrow-back-up' as icon,
     'green' as outline;
 
--- Liste   
+--Onglets
+SET tab=coalesce($tab,'Utilisateurs');
+select 'tab' as component;
+select  'Utilisateurs' as title, 'user-circle' as icon, CASE WHEN $tab='Utilisateurs' THEN 1 ELSE 0 END as active, CASE WHEN $tab='Utilisateurs' THEN 'orange' ELSE 'secondary' END as color;
+select  'Administrateurs' as title, '' as icon, CASE WHEN $tab='Administrateurs' THEN 1 ELSE 0 END as active, CASE WHEN $tab='Administrateurs' THEN 'orange' ELSE 'secondary' END as color;
+
+-- Liste utilisateurs  
 SELECT 'table' as component,
         'Admin' as markdown,
+        'Alerte' as icon,
     TRUE    as hover,
-    TRUE    as striped_rows,
+    --TRUE    as striped_rows,
     TRUE    as small,
     1 as sort,
-    1 as search;
+    1 as search WHERE $tab='Utilisateurs';
 SELECT 
   nom AS Nom,
   prenom AS Prénom,
   username as Identifiant,
   permissions.groupes as Groupe,
   strftime('%d/%m/%Y %H:%M',connexion) as Connexion,
-      '[
+CASE WHEN consentement=0 THEN
+'[
     ![](../icons/pencil.svg)
 ](comptes_edit.sql?id='||username||')[
     ![](../icons/trash.svg)
-](comptes_delete.sql?id='||username||')' as Admin
-FROM user_info JOIN permissions on user_info.groupe=permissions.groupes_id WHERE groupe<4 ORDER BY nom ASC;   
+](comptes_delete.sql?id='||username||')[
+    ![](../icons/bell-off.svg)
+](comptes_delete_cancel.sql?id='||username||')'
+ELSE      '[
+    ![](../icons/pencil.svg)
+](comptes_edit.sql?id='||username||')[
+    ![](../icons/trash.svg)
+](comptes_delete.sql?id='||username||')' END as Admin,
+  CASE WHEN consentement=0 THEN 'bell-exclamation' END as Alerte,
+    CASE WHEN consentement=0 THEN 'red' END as _sqlpage_color
+FROM user_info JOIN permissions on user_info.groupe=permissions.groupes_id WHERE groupe<4  AND $tab='Utilisateurs' ORDER BY nom ASC;  
+
+
+-- Liste   administrateurs
+SELECT 'table' as component,
+        'Admin' as markdown,
+        'Alerte' as icon,
+    TRUE    as hover,
+    --TRUE    as striped_rows,
+    TRUE    as small,
+    1 as sort,
+    1 as search WHERE $tab='Administrateurs';
+SELECT 
+  nom AS Nom,
+  prenom AS Prénom,
+  username as Identifiant,
+  permissions.groupes as Groupe,
+  strftime('%d/%m/%Y %H:%M',connexion) as Connexion,
+     '[
+    ![](../icons/pencil.svg)
+](comptes_edit.sql?id='||username||')' as Admin,
+  CASE WHEN consentement=0 THEN 'bell-exclamation' END as Alerte,
+    CASE WHEN consentement=0 THEN 'red' END as _sqlpage_color
+FROM user_info JOIN permissions on user_info.groupe=permissions.groupes_id WHERE groupe=4  AND $tab='Administrateurs' ORDER BY nom ASC;    

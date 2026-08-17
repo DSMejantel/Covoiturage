@@ -5,14 +5,16 @@ SELECT 'dynamic' AS component, sqlpage.read_file_as_text('index.json') AS proper
 set result = sqlpage.send_mail(json_object(
     'to', 'mairie-de-barjac48@wanadoo.fr',
     'subject', 'Demande de suppression de compte',
-    'body', 'Bonjour,'||:username||' a demandé la suppression de son compte Barjac Mobilités.'
+    'body', 'Bonjour,'||:username||' a demandé la suppression de son compte BARJACar.'
 ))
 
 set result = sqlpage.send_mail(json_object(
     'to', :courriel,
     'subject', 'Demande de suppression de compte',
-    'body', 'Bonjour '||:username||', votre demande de suppression du compte Barjac Mobilités a été transmise.'
+    'body', 'Bonjour '||:username||', votre demande de suppression du compte BARJACar a été transmise.'
 ))
+
+UPDATE user_info set consentement=0 WHERE username=:username
 
 select 'alert' as component,
     case when json_extract($result, '$.status') = 'accepted' then 'Validé !' else 'Problème !' end as title,

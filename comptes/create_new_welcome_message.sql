@@ -33,7 +33,7 @@ SELECT 'alert' as component,
     'succes' as icon,
     'green' as color,
      'Validé !' AS title,
-   'Pour information,  le nouveau compte '|| $username ||' a bien été créé.' AS description_md
+   'Pour information,  le nouveau compte <<'|| REPLACE($username, ' ', '') ||'>> a bien été créé.' AS description_md
    WHERE $error IS NULL;
 select   
    '/index.sql' AS link,

@@ -11,11 +11,12 @@ SELECT 'redirect' AS component,
 SELECT 'dynamic' AS component, sqlpage.read_file_as_text('menu.json') AS properties;
 --
 -- Set variables 
-SET nom_edit = (SELECT nom FROM user_info WHERE username = $id);
-SET prenom_edit = (SELECT prenom FROM user_info WHERE username = $id);
-SET group_edit = (SELECT groupe FROM user_info WHERE username = $id);
-SET tel_edit = (SELECT tel FROM user_info WHERE username = $id);
-SET courriel_edit = (SELECT courriel FROM user_info WHERE username = $id);
+SET username_edit = (SELECT username FROM user_info WHERE TRIM(username) = $id);
+SET nom_edit = (SELECT nom FROM user_info WHERE TRIM(username) = $id);
+SET prenom_edit = (SELECT prenom FROM user_info WHERE TRIM(username) = $id);
+SET group_edit = (SELECT groupe FROM user_info WHERE TRIM(username) = $id);
+SET tel_edit = (SELECT tel FROM user_info WHERE TRIM(username) = $id);
+SET courriel_edit = (SELECT courriel FROM user_info WHERE TRIM(username) = $id);
 
 --Bouton retour sans valider
 select 
@@ -43,13 +44,6 @@ select
     'red' as outline; 
 
 -- Rappel du Compte concerné par la modification
-SELECT 
-    'alert' as component,
-    'Alerte' as title,
-    'Visualiser les changements opérés' as description,
-    'alert-triangle' as icon,
-    'green' as color;
-    
 SELECT 'table' as component;
 SELECT 
   username as Identifiant,
@@ -57,7 +51,7 @@ SELECT
   prenom AS Prénom,
   tel as Téléphone,
   courriel as courriel
-FROM user_info WHERE username=$id; 
+FROM user_info WHERE TRIM(username)=$id; 
     
 --- Formulaire de Mise à jour
 SELECT 
@@ -65,6 +59,7 @@ SELECT
     'comptes_edit_confirm.sql?id='||$id as action,
     'Mettre à jour' as validate,
     'orange'           as validate_color;
+    SELECT 'Identifiant' AS label, 'username' AS name, $username_edit as value, 4 as width;
     SELECT 'Nom' AS label, 'nom' AS name, $nom_edit as value, 4 as width;
     SELECT 'Prénom' AS label, 'prenom' AS name, $prenom_edit as value, 4 as width;
     SELECT 'Téléphone' AS label, 'tel' AS name, $tel_edit as value, 4 as width;

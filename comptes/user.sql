@@ -18,6 +18,8 @@ select  'Mes besoins' as title, 'map-search' as icon, CASE WHEN $tab='Mes besoin
 
 
 ---- Ligne d'identification de l'utilisateur et de son mode de connexion
+SET user_edit = (SELECT login_session.username FROM login_session join user_info on user_info.username=login_session.username WHERE id = sqlpage.cookie('session'));
+
 SELECT 'text' AS component
     where $tab='Mon profil';
 SELECT
@@ -52,13 +54,13 @@ select
     where $tab='Mon profil';
 select 
     'Je veux supprimer mon compte' as title,
-    'demande.sql' as link,
+    'demande.sql?user_edit='||$user_edit as link,
     'trash' as icon,
     'danger' as outline
     where $tab='Mon profil';
    
 -- Profil
-SET user_edit = (SELECT login_session.username FROM login_session join user_info on user_info.username=login_session.username WHERE id = sqlpage.cookie('session'));
+
 SELECT 'table' as component,
     'nom' as Nom,
     'prenom' as Prénom,

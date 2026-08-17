@@ -5,8 +5,10 @@ SELECT 'dynamic' AS component, sqlpage.read_file_as_text('index.json') AS proper
 select 'alert' as component,
     'Attention !' as title,
     'alert-triangle' as icon,
-    --'Une fois la demande prise en compte par nos services, la suppression est définitive !' as description,
+    'Une fois la demande prise en compte par nos services, la suppression est définitive !' as description_md,
     'red' as color;
+    
+   
 
 -- Formulaire
 SELECT 'form' AS component,
@@ -17,7 +19,7 @@ SELECT 'form' AS component,
 
 SELECT 'hidden' as type, 'username' AS name, (SELECT login_session.username FROM login_session join user_info on user_info.username=login_session.username WHERE id = sqlpage.cookie('session')) as value;
 SELECT 'hidden' as type, 'courriel' AS name, (SELECT user_info.courriel FROM login_session join user_info on user_info.username=login_session.username WHERE id = sqlpage.cookie('session')) as value;
-SELECT 'Une fois la demande prise en compte par nos services, la suppression est définitive !' as value, TRUE as readonly;
+SELECT 'En cas de confirmation, un courriel est adressé à l''administrateur des comptes' as value, TRUE as readonly;
     
 select 
     'button' as component;

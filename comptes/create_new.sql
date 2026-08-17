@@ -6,7 +6,7 @@ SELECT 'redirect' AS component, 'create_new_welcome_message.sql?error='||1||'&us
 );
            
     INSERT INTO user_info (username, password_hash, nom, prenom, groupe, tel, courriel, consentement)
-    VALUES (:username, sqlpage.hash_password(:password), :nom, :prenom, 1, :tel, :courriel, 1)
+    VALUES (REPLACE(:username, ' ', ''), sqlpage.hash_password(:password), :nom, :prenom, 1, NULLIF(:tel,''), :courriel, 1)
     
     SELECT 'redirect' AS component,
     'create_new_welcome_message.sql?username=' || :username AS link;
