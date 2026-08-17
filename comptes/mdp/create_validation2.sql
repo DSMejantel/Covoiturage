@@ -6,7 +6,7 @@ SET username=(SELECT username FROM user_info WHERE courriel=:mail)
 
 set result = sqlpage.send_mail(json_object(
     'to', $courriel,
-    'subject', 'Mot de passe oublié pour Barjac Mobilités',
+    'subject', 'Mot de passe oublié pour BARJACar',
     'body', 'Bonjour '||$username||' : Votre code de validation est : '||:code
 ))
 
