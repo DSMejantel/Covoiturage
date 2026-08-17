@@ -1,0 +1,13 @@
+/* Forcer le texte en noir sur bg-red-lt et bg-teal-lt */
+.bg-red-lt,
+.bg-teal-lt {
+    color: #000000 !important;
+}
+
+/* Forcer également les liens ou icônes à l'intérieur */
+.bg-red-lt a,
+.bg-teal-lt a,
+.bg-red-lt .icon,
+.bg-teal-lt .icon {
+    color: #000000 !important;
+}
