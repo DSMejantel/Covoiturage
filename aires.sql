@@ -31,4 +31,22 @@ select
     '/aires/form.sql?_sqlpage_embed' as embed;
 select 
     '/aires/carte.sql?_sqlpage_embed' as embed;
+    
+select 'list' as component,
+    'Aires' as title,
+    '' as empty_title,
+    TRUE                   as compact;
+select 
+covoit as title,
+  covoit_Lat as latitude,
+  covoit_Lon as longitude,
+    '/aires/aire_edit.sql?id='||id as edit_link,
+    CASE WHEN NOT EXISTS (
+    SELECT 1 
+    FROM arrets 
+    WHERE arrets.aire_id = aires.id
+  ) THEN '/aires/aire_delete.sql?id='||id
+  ELSE NULL END as delete_link    
+      FROM aires ORDER BY covoit;
+
  

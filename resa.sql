@@ -19,6 +19,31 @@ sqlpage.read_file_as_text('index.json')  AS properties where $group_id=3;
 SELECT 'dynamic' AS component,
 sqlpage.read_file_as_text('menu.json')  AS properties where $group_id=4;
 
+
+select 
+    'alert'   as component,
+    'Réservation' as title,
+    'Conducteur : '||user_id||CHAR(10)||CHAR(10)||'Informations : '||coalesce(infos,'pas de remarques') as description_md,
+    'car'   as icon,
+    'teal'   as color
+         FROM trajets WHERE trajets.id=$id;
+
+select 
+    'steps' as component,
+    'teal' as color,
+        TRUE     as counter;
+select 
+     depart as title
+     FROM trajets WHERE trajets.id=$id;
+select 
+     group_concat(covoit) as title
+     FROM trajets JOIN arrets on trajets.id=arrets.trajet_id JOIN aires on aires.id=arrets.aire_id WHERE trajets.id=$id;
+select 
+    arrivee as title,
+    TRUE      as active
+    FROM trajets WHERE trajets.id=$id;
+
+
 SELECT 
     'form' as component,
     'Valider'  as validate,

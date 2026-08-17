@@ -18,7 +18,7 @@ SELECT
 --Mailing des besoins
 SELECT sqlpage.send_mail(json_object(
     'to', courriel,
-    'subject', 'Alerte Barjac Mobilités',
+    'subject', 'Alerte BARJACar',
     'body', 'Bonjour '||user_id||'. Un conducteur propose un trajet vers une de vos destinations demandées :  ' 
             || arrivee || ', le ' || strftime('%d/%m/%Y',pjour) || ' pour une arrivée vers ' || pheure||'.  Vous pouvez consulter https://covoiturage.barjac-en-lozere.fr pour réserver votre place.'
 )) FROM alerte WHERE courriel IS NOT NULL AND courriel != ''

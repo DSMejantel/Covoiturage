@@ -71,18 +71,18 @@ select
     ''  as validate,    
     'square-plus' as icon,
     'teal' as color;
-select 'user_search_D' as name, 'Départ' as label, :user_search_D as value;
-select 'user_search_A' as name, 'Arrivée' as label, :user_search_A as value;
+select 'user_search_D' as name, 'Départ' as label, :user_search_D as value, TRUE as required;
+select 'user_search_A' as name, 'Arrivée' as label, :user_search_A as value, TRUE as required;
 SELECT 'hidden' as type, 'username' as name, user_info.username as value FROM login_session join user_info on user_info.username=login_session.username WHERE id = sqlpage.cookie('session');
-SELECT 'Date' AS label, 'dep_date' AS name, 'date' as type, (select date(:dep_date)) as value, 4 as width;
-SELECT 'Heure d''arrivée' AS label, 'heure' AS name, 'time' as type, strftime('%H:%M',:heure) as value, 4 as width;
-SELECT 'places' AS name, 'places' AS label, 'number' AS type, 4 as width, :places as value;
+SELECT 'Date' AS label, 'dep_date' AS name, 'date' as type, (select date(:dep_date)) as value, 4 as width, TRUE as required;
+SELECT 'Heure d''arrivée' AS label, 'heure' AS name, 'time' as type, strftime('%H:%M',:heure) as value, 4 as width, TRUE as required;
+SELECT 'places' AS name, 'places' AS label, 'number' AS type, 4 as width, :places as value, TRUE as required;
 SELECT 'infos' as name, 'Précisions' as label, 12 as width;
 SELECT 'hidden' as type, 'dep_Lon' as name, $Dlon as value;
 SELECT 'hidden' as type, 'dep_Lat' as name, $Dlat as value;
 SELECT 'hidden' as type, 'arr_Lon' as name, $Alon as value;
 SELECT 'hidden' as type, 'arr_Lat' as name, $Alat as value;
-SELECT 'aire[]' AS name, 'Aires sur le trajet' AS label, TRUE as required, 'select' AS type, 8 as width, true as multiple, true as dropdown, json_group_array(json_object("label" , covoit, "value", id )) as options FROM (select * FROM aires ORDER BY covoit ASC);
+SELECT 'aire[]' AS name, 'Aires sur le trajet' AS label, TRUE as required, 'Je sélection un ou plusieurs points de rencontre (voir carte ci-dessous)' as placeholder, 'select' AS type, 8 as width, true as multiple, true as dropdown, json_group_array(json_object("label" , covoit, "value", id )) as options FROM (select * FROM aires ORDER BY covoit ASC);
   
 select 
     'button' as component,
@@ -108,12 +108,12 @@ select 'map' as component,
   $Alat as latitude,
   $Alon as longitude;
 
-select :user_search_D||' - '||:user_search_A as title,
+select :user_search_D as title,
   'home'   as icon,
   'teal' as color,
   $Dlat as latitude,
   $Dlon as longitude;
-select :user_search_D||' - '||:user_search_A as title,
+select :user_search_A as title,
   'car'   as icon,
   'red' as color,
   $Alat as latitude,
@@ -124,4 +124,10 @@ select
     JSON('{"type":"LineString","coordinates":[['||CAST($Dlon as DECIMAL)||','||CAST($Dlat as DECIMAL)||'],['||CAST($Alon as DECIMAL)||','||CAST($Alat as DECIMAL)||']]}') as geojson,
     'teal'                    as color,
     :places||' place(s) proposée(s)' as description;
+    
+select covoit as title,
+  covoit_Lat as latitude,
+  covoit_Lon as longitude,
+      'bus-stop' as icon
+      FROM aires;
 

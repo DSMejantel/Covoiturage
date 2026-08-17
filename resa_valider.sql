@@ -11,12 +11,12 @@ UPDATE trajets SET reserves=coalesce(reserves,0)+(:places) WHERE id=:id;
 
 set result = sqlpage.send_mail(json_object(
     'to', (SELECT courriel FROM user_info JOIN trajets on user_info.username=trajets.user_id WHERE trajets.id=:id) ,
-    'subject', 'Réservation à confirmer sur Barjac Mobilités',
+    'subject', 'Réservation à confirmer sur BARJACar',
     'body', 'Un passager souhaite profiter de l''offre de covoiturage pour '||(SELECT arrivee FROM trajets WHERE id=:id)||' le '||(SELECT strftime('%d/%m/%Y',jour) FROM trajets WHERE id=:id)||'.'
 ));
 
 INSERT INTO resa(user_id, trajet_id, places, aire, tel, courriel, validation, infos)
-SELECT :username, :id, :places, :aire, :tel, :courriel, -1,:infos
+SELECT :username, :id, :places, :aire, :tel, :courriel, -1,NULLIF(:infos,'')
 
 
 

@@ -5,7 +5,7 @@
 
 -- Mise à jour des tables et enregistrement
 INSERT INTO trajets (user_id, jour, heure, depart, arrivee, places, reserves, dep_Lon, dep_Lat, arr_Lon, arr_Lat, infos)
-VALUES (:username, :dep_date, :heure, :user_search_D, :user_search_A, :places, 0, :dep_Lon, :dep_Lat, :arr_Lon, :arr_Lat, :infos)
+VALUES (:username, :dep_date, :heure, :user_search_D, :user_search_A, :places, 0, :dep_Lon, :dep_Lat, :arr_Lon, :arr_Lat, NULLIF(:infos,''))
 
 INSERT INTO arrets(trajet_id, aire_id)
 SELECT
@@ -40,7 +40,7 @@ SET mail_results = sqlpage.run_sql('envoi_alerte.sql');
 /*
 SELECT sqlpage.send_mail(json_object(
     'to', courriel,
-    'subject', 'Alerte Barjac Mobilités',
+    'subject', 'Alerte BARJACar',
     'body', 'Bonjour '||user_id||'. Un conducteur propose un trajet vers une de vos destinations demandées :  ' 
             || arrivee || ', le ' || strftime('%d/%m/%Y',jour) || ' pour une arrivée vers ' || heure||'.  Vous pouvez consulter https://covoiturage.barjac-en-lozere.fr pour réserver votre place.'
 )) FROM alerte  WHERE courriel IS NOT NULL AND courriel != '';

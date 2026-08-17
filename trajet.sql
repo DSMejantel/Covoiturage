@@ -41,11 +41,11 @@ SELECT
     'trajet_ajout_carte' as id,
     ''  as validate;
 SELECT 'hidden' as type, 'user' as name, user_info.username as value FROM login_session join user_info on user_info.username=login_session.username WHERE id = sqlpage.cookie('session');
-SELECT 'Date' AS label, 'dep_date' AS name, 'date' as type, (select date('now')) as value, 4 as width;
-SELECT 'Heure d''arrivée' AS label, 'heure' AS name, 'time' as type, strftime('%H:%M','now') as value, 4 as width;
-SELECT 'places' AS name, 'places' AS label, 'number' AS type, 1 AS step, 1 as min, 4 as width, 1 as value;
-select 'user_search_D' as name, 'Ville ou adresse de DÉPART' as label, 'Code postal adresse, COMMUNE' as placeholder; 
-select 'user_search_A' as name, 'Ville ou adresse d''ARRIVÉE' as label, 'Code postal adresse, COMMUNE' as placeholder;
+SELECT 'Date' AS label, 'dep_date' AS name, 'date' as type, (select date('now')) as value, 4 as width, TRUE as required;
+SELECT 'Heure d''arrivée' AS label, 'heure' AS name, 'time' as type, strftime('%H:%M','now') as value, 4 as width, TRUE as required;
+SELECT 'places' AS name, 'places' AS label, 'number' AS type, 1 AS step, 1 as min, 4 as width, 1 as value, TRUE as required;
+select 'user_search_D' as name, 'Ville ou adresse de DÉPART' as label, 'Code postal adresse, COMMUNE' as placeholder, TRUE as required; 
+select 'user_search_A' as name, 'Ville ou adresse d''ARRIVÉE' as label, 'Code postal adresse, COMMUNE' as placeholder, TRUE as required;
 
    
 select 

@@ -17,7 +17,7 @@ sqlpage.read_file_as_text('menu.json')  AS properties where $group_id=4;
 
 
 SELECT 'alert' as component,
-    'Pourquoi ce site "Barjac Mobilités" ?' as title,
+    'Pourquoi ce site "BARJACar" ?' as title,
     'Suite à la consultation des habitants de Barjac, la question de faciliter le covoiturage via des aires identifiées et des outils en ligne a été formulée plusieurs fois. Le conseil municipal a donc fait le choix d''un site utilisable gratuitement, accessible avec un téléphone connecté et une adresse mail. Cet un outil entièrement développé par l''équipe municipale de Barjac.' 
     as description_md,
     TRUE as dismissible,
@@ -26,7 +26,7 @@ SELECT 'alert' as component,
   
 SELECT 'alert' as component,
     'C''est gratuit ?' as title,
-    'Oui : ce service est proposé gratuitement. Il suffit de s''inscrire en ligne en moins de 2 minutes avec une adresse de courriel.' 
+    'Oui : le service BARJACar est proposé gratuitement. Il suffit de s''inscrire en ligne en moins de 2 minutes avec une adresse de courriel.' 
     as description_md,
     TRUE as dismissible,
     'pig-money' as icon,
@@ -50,7 +50,7 @@ SELECT 'alert' as component,
     
 SELECT 'alert' as component,
     'Comment ça marche ?' as title,
-    'Depuis le tableau de bord, vous pouvez consulter les destinations proposées sous forme de carte ou de liste. Vous pouvez également formuler des demandes de trajets. Ensuite à vous de réserver dans la liste ou de valider vos passagers.' 
+    'Depuis le tableau de bord de BARJACar, vous pouvez consulter les destinations proposées sous forme de carte ou de liste. Vous pouvez également formuler des demandes de trajets. Ensuite à vous de réserver dans la liste ou de valider vos passagers.' 
     as description_md,
     TRUE as dismissible,
     'settings-automation' as icon,
@@ -58,12 +58,28 @@ SELECT 'alert' as component,
 
 
 SELECT 'alert' as component,
-    'Comment trouver quelqu''un qui peut me transporter ?' as title,
+    'Comment trouver quelqu''un qui peut me transporter avec BARJACar?' as title,
     'Dans le tableau de bord, vous pouvez cliquer sur le repère de la ville qui vous intéresse. Le nombre de trajets et de place apparaît. Si on clique sur le nom de la ville, on est dirigé vers la liste de tous les trajets vers ce lieu.' 
     as description_md,
     TRUE as dismissible,
     'zoom-question' as icon,
     'orange' as color;  
+    
+SELECT 'alert' as component,
+    'Où cliquer pour réserver ?' as title,
+    'C''est tout simple : on clique sur la petite main à droite de la destination qui m''intéresse et ensuite on est dirigé vers le formulaire de réservation.' 
+    as description_md,
+    TRUE as dismissible,
+    'hand-click' as icon,
+    'green' as color; 
+
+SELECT 'alert' as component,
+    'Comment savoir s''il reste des places?' as title,
+    'Le nombre de silouhettes indique le nombre de places disponibles. De plus la destination apparait en vert. S''il ne reste plus de place, la ligne est surlignée en rouge.' 
+    as description_md,
+    TRUE as dismissible,
+    'users-group' as icon,
+    'orange' as color; 
 
 SELECT 'alert' as component,
     'Comment puis-je formuler une demande ou un besoin pour un trajet ?' as title,
@@ -75,7 +91,7 @@ SELECT 'alert' as component,
 
    
 SELECT 'alert' as component,
-    'Comment suis-je notifié pour les réservations ?' as title,
+    'Comment suis-je notifié pour les réservations sur BARJACar ?' as title,
     'Par mail : notre serveur vous envoie instantanément les informations concernant les trajets qui peuvent vous intéresser, les réservations d''un passager ou la validation par le conducteur.' 
     as description_md,
     TRUE as dismissible,
@@ -83,7 +99,7 @@ SELECT 'alert' as component,
     'orange' as color;  
 
 SELECT 'alert' as component,
-    'Est-ce que je peux utiliser cette application même si je n''ai pas de voiture ?' as title,
+    'Est-ce que je peux utiliser l''application BARJACar même si je n''ai pas de voiture ?' as title,
     'Oui, bien sûr. Sur le tableau de bord, l''onglet "Mes trajets" propose les deux options : Je suis conducteur ou Je suis passager. Bien entendu vous pouvez être parfois conducteur et parfois passager...' 
     as description_md,
     TRUE as dismissible,

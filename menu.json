@@ -1,8 +1,9 @@
 {
     "component": "shell",
-    "title": "Mobilités BARJAC",
+    "title": "BARJACar",
     "link": "/",
     "icon": "car",
+    "css" : "/css/theme_01.css",
     "footer":"Conception : Commune de BARJAC (48) avec SQLpage",
     "javascript_module": "/rich_text_editor.js",
     "favicon":"/favicon.ico",
