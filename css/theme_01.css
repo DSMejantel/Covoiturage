@@ -11,3 +11,108 @@
 .bg-teal-lt .icon {
     color: #000000 !important;
 }
+
+/* Redéfinit la taille d'affichage de la valeur dans 'columns' */
+.card-body .display-5,
+.card-body .display-6,
+.card-body .h1 {
+  font-size: 1.5rem !important; /* Ajustez la taille souhaitée (par défaut ~2.5rem à 3rem) */
+}
+
+/* Ciblage spécifique du small_text dans le composant columns */
+.card-body small,
+.card-body .small {
+  font-size: 0.9rem !important;  /* Taille plus grande (ajustez selon vos besoins) */
+}
+
+/* --- 1. TOUS LES ONGLETS (Base) --- */
+main ul.nav a.nav-link {
+    border-radius: 12px !important;
+    border: none !important;
+    padding: 0.5rem 1.25rem !important;
+    transition: all 0.2s ease-in-out !important;
+}
+
+/* --- 2. SURVOL (HOVER) DES ONGLETS INACTIFS --- */
+main ul.nav a.nav-link:hover:not(.active):not(.text-orange) {
+    background-color: rgba(32, 201, 151, 0.15) !important; /* Voile Teal léger */
+    color: var(--tblr-teal, #20c997) !important;
+}
+
+/* --- 3. ONGLETS SÉLECTIONNÉS / ACTIFS (Mes trajets, Je suis CONDUCTEUR, etc.) --- */
+main ul.nav a.nav-link.active,
+main ul.nav a.nav-link.text-orange {
+    background-color: var(--tblr-teal, #20c997) !important; /* Fond Teal plein */
+    color: #ffffff !important;                              /* Texte Blanc */
+    border: none !important;                                /* Pas de bordure orange */
+    border-radius: 12px !important;                          /* Coins arrondis */
+    font-weight: 600 !important;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.12) !important;
+}
+
+/* --- 4. FORCE L'ICÔNE ET LE TEXTE EN BLANC QUAND L'ONGLET EST ACTIF --- */
+main ul.nav a.nav-link.active *,
+main ul.nav a.nav-link.text-orange * {
+    color: #ffffff !important;
+}
+
+/* --- OPTIMISATION DES ONGLETS SUR ÉCRAN DE TÉLÉPHONE (< 768px) --- */
+@media (max-width: 767.98px) {
+
+    /* 1. Réduction des marges de la liste d'onglets */
+    main ul.nav {
+        gap: 4px !important;                 /* Espace réduit au strict minimum entre les onglets */
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        justify-content: space-between !important; /* Répartition homogène */
+    }
+
+    /* 2. Réduction du rembourrage interne des liens/onglets */
+    main ul.nav a.nav-link {
+        padding: 0.4rem 0.5rem !important;   /* Moins d'espace autour du texte/icône */
+        font-size: 0.85rem !important;       /* Texte légèrement plus petit pour éviter qu'il casse */
+        letter-spacing: -0.2px !important;   /* Resserre très légèrement les lettres */
+    }
+
+    /* 3. Réduction de l'espace à droite de l'icône SVG */
+    main ul.nav a.nav-link .me-1,
+    main ul.nav a.nav-link span {
+        margin-right: 2px !important;
+    }
+}
+
+/* --- TITRE / LIEN DANS LE COMPOSANT MAP --- */
+
+/* Couleur par défaut (Teal) */
+.leaflet-popup-content h3 a,
+.leaflet-popup-content a.title,
+main .map-container a {
+    color: var(--tblr-teal, #20c997) !important;
+    text-decoration: none !important;
+    font-weight: 600 !important;
+    transition: color 0.2s ease-in-out !important;
+}
+
+/* Survol (Hover) : Passage à une nuance Teal plus foncée ou Orange d'accentuation */
+.leaflet-popup-content h3 a:hover,
+.leaflet-popup-content a.title:hover,
+main .map-container a:hover {
+    color: var(--tblr-teal-darken, #1baa80) !important; /* Teal plus soutenu au survol */
+    text-decoration: underline !important;               /* Soulignement discret */
+}
+
+/* --- LIENS EMAIL (mailto:) --- */
+
+/* Couleur par défaut : Teal */
+a[href^="mailto:"] {
+    color: var(--tblr-orange, #20c997) !important;
+    text-decoration: none !important;
+    font-weight: 500 !important;
+    transition: color 0.2s ease-in-out !important;
+}
+
+/* Effet au survol (hover) : Accent Orange + soulignement */
+a[href^="mailto:"]:hover {
+    color: var(--tblr-teal, #f76707) !important;
+    text-decoration: underline !important;
+}
