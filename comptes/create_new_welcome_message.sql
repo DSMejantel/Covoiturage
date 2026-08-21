@@ -36,10 +36,11 @@ SELECT 'alert' as component,
    'Pour information,  le nouveau compte <<'|| REPLACE($username, ' ', '') ||'>> a bien été créé.' AS description_md
    WHERE $error IS NULL;
 select   
-   '/index.sql' AS link,
-    'Retour au tableau de bord' AS title,
+   '/comptes/signin.sql' AS link,
+    'Page de connexion' AS title,
    'green' as color
 WHERE $error IS NULL;
+
 
 
 SELECT 'alert' as component,

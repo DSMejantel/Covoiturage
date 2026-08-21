@@ -1,5 +1,5 @@
 SELECT 'redirect' AS component,
-        'signin.sql?error' AS link
+        '/comptes/signin.sql?error' AS link
  WHERE NOT EXISTS (SELECT 1 FROM login_session WHERE id=sqlpage.cookie('session'));
 SET group_id = (SELECT user_info.groupe FROM login_session join user_info on user_info.username=login_session.username WHERE id = sqlpage.cookie('session'));
 SELECT 'redirect' AS component,
@@ -29,6 +29,7 @@ SET tab=coalesce($tab,'Utilisateurs');
 select 'tab' as component;
 select  'Utilisateurs' as title, 'user-circle' as icon, CASE WHEN $tab='Utilisateurs' THEN 1 ELSE 0 END as active, CASE WHEN $tab='Utilisateurs' THEN 'orange' ELSE 'secondary' END as color;
 select  'Administrateurs' as title, '' as icon, CASE WHEN $tab='Administrateurs' THEN 1 ELSE 0 END as active, CASE WHEN $tab='Administrateurs' THEN 'orange' ELSE 'secondary' END as color;
+select  'Suggestions' as title, 'bulb' as icon, CASE WHEN $tab='Suggestions' THEN 1 ELSE 0 END as active, CASE WHEN $tab='Suggestions' THEN 'orange' ELSE 'secondary' END as color;
 
 -- Liste utilisateurs  
 SELECT 'table' as component,
@@ -83,4 +84,25 @@ SELECT
 ](comptes_edit.sql?id='||username||')' as Admin,
   CASE WHEN consentement=0 THEN 'bell-exclamation' END as Alerte,
     CASE WHEN consentement=0 THEN 'red' END as _sqlpage_color
-FROM user_info JOIN permissions on user_info.groupe=permissions.groupes_id WHERE groupe=4  AND $tab='Administrateurs' ORDER BY nom ASC;    
+FROM user_info JOIN permissions on user_info.groupe=permissions.groupes_id WHERE groupe=4  AND $tab='Administrateurs' ORDER BY nom ASC; 
+
+-- Suggestions   
+SELECT 'table' as component,
+    'Pas de remarque déposée' as empty_description,
+    'Suggestion' as markdown,
+    'nom' as Nom,
+    'Lu' as markdown,
+    'Validation' as markdown
+        where $tab='Suggestions';
+SELECT 
+  idee||CHAR(10)||CHAR(10)||'Réponse : '||coalesce(reponse,'Pas encore de réponse') AS Suggestion,
+CASE WHEN lecture=-1 
+     THEN '[![](/icons/mail-fast.svg)](/suggestions/lecture.sql?id='||id||')' 
+     ELSE '[![](/icons/mail-opened.svg)](/suggestions/lecture.sql?id='||id||')' 
+END AS Lu,
+  CASE WHEN validation=-1 
+  THEN '[![](/icons/square.svg)](/suggestions/validation.sql?id='||id||')' 
+  ELSE '[![](/icons/square-check.svg)](/suggestions/validation.sql?id='||id||')' 
+  END as Validation,
+  '[![](/icons/mail.svg)](/suggestions/reponse.sql?id='||id||')' as Validation
+FROM idees where $tab='Suggestions';   
