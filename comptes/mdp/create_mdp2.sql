@@ -1,7 +1,7 @@
 --Menu
 SELECT 'dynamic' AS component, sqlpage.read_file_as_text('connexion.json') AS properties;
 
-SET code=sqlpage.random_string(6)
+SET code=(SELECT (abs(random()) % 900000) + 100000)
 
 -- Formulaire
 SELECT 'form' AS component,
