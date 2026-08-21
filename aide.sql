@@ -22,7 +22,7 @@ SELECT 'alert' as component,
     as description_md,
     TRUE as dismissible,
     'bulb' as icon,
-    'green' as color;
+    'teal' as color;
   
 SELECT 'alert' as component,
     'C''est gratuit ?' as title,
@@ -38,7 +38,7 @@ SELECT 'alert' as component,
     as description_md,
     TRUE as dismissible,
     'shield-check' as icon,
-    'green' as color;
+    'teal' as color;
     
 SELECT 'alert' as component,
     'Mes données personnelles sont-elles conservées ?' as title,
@@ -54,7 +54,7 @@ SELECT 'alert' as component,
     as description_md,
     TRUE as dismissible,
     'settings-automation' as icon,
-    'green' as color;
+    'teal' as color;
 
 
 SELECT 'alert' as component,
@@ -71,7 +71,7 @@ SELECT 'alert' as component,
     as description_md,
     TRUE as dismissible,
     'hand-click' as icon,
-    'green' as color; 
+    'teal' as color; 
 
 SELECT 'alert' as component,
     'Comment savoir s''il reste des places?' as title,
@@ -83,11 +83,11 @@ SELECT 'alert' as component,
 
 SELECT 'alert' as component,
     'Comment puis-je formuler une demande ou un besoin pour un trajet ?' as title,
-    'Que ce soit pour un déplacement professionnel, une activité sportive ou un rendez-vous médical, vous pouvez préciser le lieu, le jour et l''heure de ce besoin. Pour cela, deux solutions : depuis le tableau de bord et l''onglet "Demandes" ou bien depuis le menu "Mon compte" et le sous-menu "Mes besoins". ' 
+    'Que ce soit pour un déplacement professionnel, une activité sportive ou un rendez-vous médical, vous pouvez préciser le lieu, le jour et l''heure de ce besoin. Pour cela, deux solutions : depuis le tableau de bord et l''onglet "Les souhaits" ou bien depuis le menu "Mon compte" et le sous-menu "Mes besoins". Dès qu''un trajet correspond à votre souhait (destination, date) vous êtes automatiquement averti par courriel !' 
     as description_md,
     TRUE as dismissible,
     'world-question' as icon,
-    'green' as color;
+    'teal' as color;
 
    
 SELECT 'alert' as component,
@@ -104,4 +104,13 @@ SELECT 'alert' as component,
     as description_md,
     TRUE as dismissible,
     'car-off' as icon,
-    'green' as color;
+    'teal' as color;
+
+SELECT 'alert' as component,
+    'Est-ce que je peux aider à améliorer BARJACar ?' as title,
+    'Oui, bien sûr. Vous pouvez contribuer en proposant des nouveaux points de rencontre pour covoiture. Depuis votre espace personnels, sous l''onglet "Mes suggestions", vous pouvez proposer des améliorations à notre application.' 
+    as description_md,
+    TRUE as dismissible,
+    'heart-handshake' as icon,
+    'orange' as color;   
+    

@@ -1,5 +1,5 @@
  SELECT 'redirect' AS component,
-        'signin.sql?error' AS link
+        '/comptes/signin.sql?error' AS link
  WHERE NOT EXISTS (SELECT 1 FROM login_session WHERE id=sqlpage.cookie('session'));
         
 

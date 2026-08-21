@@ -1,4 +1,8 @@
--- Table temporaire
+SELECT 'redirect' AS component,
+        '/comptes/signin.sql?error' AS link
+ WHERE NOT EXISTS (SELECT 1 FROM login_session WHERE id=sqlpage.cookie('session'));
+ 
+ -- Table temporaire
 create temporary table if not exists alerte(besoin, user_id, courriel, bjour, bheure, precisions, pjour, pheure, arrivee);
 delete from alerte; 
 insert into alerte (besoin, user_id, courriel, bjour, bheure, precisions, pjour, pheure, arrivee)

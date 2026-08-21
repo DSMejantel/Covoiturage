@@ -15,14 +15,16 @@
          {"link": "/index.sql", "title": "Tableau de bord","icon":"clipboard-list"},         
          {"title": "Covoiturage", "submenu": [
             {"link": "/trajet.sql", "title": "Proposer un trajet"},
-            {"link": "/besoin.sql", "title": "Demande un trajet"},
-            {"link": "/aires/demande.sql", "title": "Demande une nouvelle aire sur la carte"},
+            {"link": "/besoin.sql", "title": "Demander un trajet"},
+            {"link": "/index.sql?tab=1", "title": "Carte des destinations"},
+            {"link": "/aires/demande.sql", "title": "Demander un nouveau point de covoiturage"},
             {"link": "/index.sql?tab=3", "title": "Gérer mon covoiturage"}
         ],"icon":"car"},
          {"link": "/aide.sql", "title": "Aide","icon":"help"},
         {"title": "Mon compte", "submenu": [
             {"link": "/comptes/user.sql?tab=Mon profil", "title": "Mon Profil"},
             {"link": "/comptes/user.sql?tab=Mes besoins", "title": "Mes besoins"},
+            {"link": "/comptes/user.sql?tab=Mes suggestions", "title": "Ma boîte à idées"},            
             {"link": "/comptes/logout.sql", "title": "Se déconnecter"}
         ],"icon":"user"}
     ]

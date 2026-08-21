@@ -15,7 +15,8 @@
          {"link": "/index.sql", "title": "Tableau de bord","icon":"clipboard-list"},               
          {"title": "Covoiturage", "submenu": [
             {"link": "/trajet.sql", "title": "Proposer un trajet"},
-            {"link": "/besoin.sql", "title": "Demande un trajet"},
+            {"link": "/besoin.sql", "title": "Demander un trajet"},
+            {"link": "/index.sql?tab=1", "title": "Carte des destinations"},
             {"link": "/index.sql?tab=3", "title": "Gérer mon covoiturage"},
             {"link": "/aires.sql", "title": "Aires de covoiturage"}
         ],"icon":"car"},
