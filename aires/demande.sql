@@ -1,3 +1,6 @@
+SELECT 'redirect' AS component,
+        '/comptes/signin.sql?error' AS link
+ WHERE NOT EXISTS (SELECT 1 FROM login_session WHERE id=sqlpage.cookie('session'));
 --Menu
 SELECT 'dynamic' AS component, sqlpage.read_file_as_text('index.json') AS properties;
 
